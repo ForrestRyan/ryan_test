@@ -1,54 +1,13 @@
 #include "include/header.h"
-#include <optional>
-#include <shared_mutex>
-#include <mutex>
-
-using namespace std;
-std::shared_mutex m_managerMutex;
-
-struct Property {
-    std::optional<int> value;
-    std::optional<std::string> name{"xiaoming"};
-    std::string tag;
-};
-
-Property getProperty() {
-    Property p;
-    return p;
-}
-
-void test_shared_mutex()
-{
-    // const std::shared_lock lock1(m_managerMutex);
-    // cout << "test shared_lock1" << endl;
-
-    {
-        const std::shared_lock lock2(m_managerMutex);
-        cout << "test shared_lock2" << endl;
-    }
-
-    {
-        const std::unique_lock lock(m_managerMutex);
-        cout << "test unique_lock" << endl;
-    }
-
-    // const std::unique_lock lock2(m_managerMutex);
-    // cout << "test unique_lock" << endl;
-}
+#include "include/test_rvalue_reference.h"
+#include "include/test_variable_condition_mutex.h"
+#include "include/test_unique_shared_lock.h"
 
 int main()
 {
-    const Property &p = getProperty();
-    test_shared_mutex();
-
-    try
-    {
-        std::cout << p.name.value_or("") << std::endl;
-    }
-    catch(const std::exception& e)
-    {
-        std::cerr << e.what() << '\n';
-    }
+    test_rvalue_reference();
+    test_unique_shared_lock();
+    test_variable_condition_mutex();
 
     std::cout << "over!" << std::endl;
 
