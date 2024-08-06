@@ -1,0 +1,7 @@
+#ifndef VA_VERSION_H_
+#define VA_VERSION_H_
+
+#define VA_BUILDUID "ONENLU"
+#define VA_VERSION " MYVERSION"
+
+#endif
