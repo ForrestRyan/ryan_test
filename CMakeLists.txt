@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.0)
+cmake_minimum_required(VERSION 3.28)
 
 # 设置项目名称
 project(MyProject)
@@ -17,3 +17,5 @@ set(CMAKE_BUILD_TYPE Debug)
 
 # 添加可执行文件
 add_executable(test main.cpp ${DIR_SRCS})
+
+message("Print current DIR_SRCS: ${DIR_SRCS}\n")
